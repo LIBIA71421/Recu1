@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    id ("kotlin-kapt") //este es para usar kapt para room
+    //id ("kotlin-kapt") //este es para usar kapt para room
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -43,9 +44,10 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     //para room
-    implementation ("androidx.room:room-runtime:2.6.1")
-    implementation ("androidx.room:room-ktx:2.6.1")
-    kapt ("androidx.room:room-compiler:2.6.1")
+    implementation (libs.androidx.room.runtime)
+    implementation (libs.androidx.room.ktx)
+    //kapt (libs.androidx.room.compiler)
+    ksp("androidx.room:room-compiler:2.7.1")
 
 
     implementation(project(":data"))
